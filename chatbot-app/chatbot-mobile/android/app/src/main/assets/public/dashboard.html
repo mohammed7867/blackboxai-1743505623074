@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduChat - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar {
+            transition: all 0.3s;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-full">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen">
+        <div id="mobile-sidebar" class="sidebar w-64 bg-blue-800 text-white p-4 transform -translate-x-full md:transform-none md:block transition-transform duration-300 fixed md:relative h-full z-40">
+            <div class="flex items-center space-x-2 mb-8">
+                <i class="fas fa-robot text-2xl text-blue-300"></i>
+                <h1 class="text-xl font-bold">EduChat</h1>
+            </div>
+            
+            <nav>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="dashboard.html" class="flex items-center space-x-2 p-2 rounded-lg bg-blue-700">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="chat.html" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Chat Assistant</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="notes.html" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-book"></i>
+                            <span>Study Notes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="mt-auto pt-4 border-t border-blue-700">
+                <button id="logout-btn" class="w-full flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-700">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Mobile Header -->
+            <header class="bg-white shadow-sm p-4 flex justify-between items-center md:hidden">
+                <button id="menu-toggle" class="text-blue-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-xl font-bold text-blue-600">Dashboard</h1>
+                <div class="w-6"></div> <!-- Spacer -->
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-6">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Welcome back, <span id="user-name">Student</span>!</h2>
+                    <p class="text-gray-600">How can I assist you with your studies today?</p>
+                </div>
+
+                <!-- Quick Access Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <a href="chat.html" class="card-hover bg-white rounded-xl shadow-md p-6 transition duration-300">
+                        <div class="text-blue-600 mb-4">
+                            <i class="fas fa-comment-dots text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Ask the Chatbot</h3>
+                        <p class="text-gray-600 text-sm">Get instant answers to your academic questions</p>
+                    </a>
+
+                    <a href="notes.html" class="card-hover bg-white rounded-xl shadow-md p-6 transition duration-300">
+                        <div class="text-green-600 mb-4">
+                            <i class="fas fa-book text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Study Notes</h3>
+                        <p class="text-gray-600 text-sm">Access and manage your saved notes</p>
+                    </a>
+
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 transition duration-300">
+                        <div class="text-purple-600 mb-4">
+                            <i class="fas fa-book-open text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Learning Resources</h3>
+                        <p class="text-gray-600 text-sm">Browse syllabus materials and textbooks</p>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-xl shadow-md p-6 transition duration-300">
+                        <div class="text-yellow-600 mb-4">
+                            <i class="fas fa-chart-line text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Progress</h3>
+                        <p class="text-gray-600 text-sm">Track your learning journey</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Section -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg">Recent Activity</h3>
+                        <a href="#" class="text-blue-600 text-sm">View All</a>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-comment text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Asked about Calculus derivatives</p>
+                                <p class="text-gray-500 text-sm">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-book text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Saved note on Data Structures</p>
+                                <p class="text-gray-500 text-sm">Yesterday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <a href="chat.html" class="fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+        <i class="fas fa-comment-dots text-xl"></i>
+    </a>
+
+    <script src="firebase.js"></script>
+    <script>
+        // Mobile menu elements
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const menuToggle = document.getElementById('menu-toggle');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Click toggle for both buttons
+        mobileMenuButton.addEventListener('click', () => {
+            mobileSidebar.classList.toggle('-translate-x-full');
+        });
+        
+        menuToggle.addEventListener('click', () => {
+            mobileSidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileSidebar.contains(e.target) && 
+                e.target !== mobileMenuButton && 
+                e.target !== menuToggle) {
+                mobileSidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // Swipe gestures
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50) {
+                // Swipe left to close
+                mobileSidebar.classList.add('-translate-x-full');
+            }
+            if (touchEndX - touchStartX > 50 && touchStartX < 50) {
+                // Swipe right from edge to open
+                mobileSidebar.classList.remove('-translate-x-full');
+            }
+        }
+
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'index.html';
+            });
+        });
+
+        // Display user name
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                document.getElementById('user-name').textContent = user.displayName || user.email.split('@')[0];
+            }
+        });
+    </script>
+</body>
+</html>
